@@ -6,8 +6,6 @@ const mongoose = require('mongoose');
 const path = require('path');
 const ejs = require('ejs')
 
-
-
 mongoose.connect('mongodb+srv://andrewmanteza21:eRqrhWTR8zMJ27rt@cluster0.jre2j.mongodb.net/Driver_records?retryWrites=true&w=majority')
 const conn = mongoose.connection;
 
@@ -23,20 +21,19 @@ console.log("connected to mongodb database")
   const database = client.db('Driver_records');
   const userrecords = database.collection('user_records');
   const adminrecords = database.collection('admin');
-  console.log('test1')
 
       app.use(express.static(path.join(__dirname, '/public')));
       app.use(express.static(path.join(__dirname, '/views')));
-
       app.use(bodyParser.urlencoded({ extended: true}))
-
       app.set('view engine', 'ejs')
       
+     
+     
+
       app.listen(3000, function() {
         console.log('here on port 3000')
   
     })
-
 
     app.get('/registeruser', function (req, res) {
       res.render('registeruser')
@@ -99,18 +96,19 @@ console.log("connected to mongodb database")
       console.log("this Form sending works")  
     
     })
-
       .catch(error => 
       console.error(error))
       console.log(req.body)
     
     })
+    var router = express.Router()
       console.log('Read Function Test')
       app.get('/', (req,res) => {
       const cursor = database.collection('user_records').find().toArray()
       .then(results => {res.render('adminview', { user_records: results})})
       console.log(cursor)
       console.log('Read Function Success') 
+      module.exports = cursor
       })
 
 
@@ -146,16 +144,19 @@ console.log("connected to mongodb database")
       phoneno: String,
       LCA: String,
   }
+
+
   const userTable = mongoose.model('user_records', userSchema);
 
-  app.get('/adminview', (req,res) => {
-    userTable.find({}, function(err,userSchema) {
+  app.get('/adminview', (req, res) => {
+    userTable.find({}, function(err, userSchema) {
       res.render('adminview', {
         userlist: userSchema
       })
     })
 
   })
+
 
        /*
     const userSchema = {
