@@ -12,6 +12,7 @@ const conn = mongoose.connection;
 const uri =
 "mongodb+srv://andrewmanteza21:eRqrhWTR8zMJ27rt@cluster0.jre2j.mongodb.net/Driver_records?retryWrites=true&w=majority";{
     
+}
 
 const client = new MongoClient(uri);
 client.connect();
