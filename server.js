@@ -52,11 +52,27 @@ console.log("connected to mongodb database")
 
     })
 
+    app.get('/techstack', function (req, res) {
+      res.render('techstack')
+      console.log('this Get from techstack.ejs works')
+
+    })
+
       app.get('/landingpage', function (req, res) {
       res.render('landingpage')
       console.log('this Get from landingpage.ejs works')
 
     })
+    app.get('/contactinfo', function (req, res) {
+      res.render('contactinfo')
+      console.log('this Get from contactinfo.ejs works')
+    })
+
+    app.get('/servicesoffered', function (req, res) {
+      res.render('servicesoffered')
+      console.log('this Get from servicesoffered.ejs works')
+    })
+
 
     app.get('/admin', function (req, res) {
       res.render('admin')
@@ -132,7 +148,7 @@ console.log("connected to mongodb database")
   }
   const userTable = mongoose.model('user_records', userSchema);
 
-  app.get('/', (req,res) => {
+  app.get('/adminview', (req,res) => {
     userTable.find({}, function(err,userSchema) {
       res.render('adminview', {
         userlist: userSchema
