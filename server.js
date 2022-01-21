@@ -10,9 +10,7 @@ mongoose.connect('mongodb+srv://andrewmanteza21:eRqrhWTR8zMJ27rt@cluster0.jre2j.
 const conn = mongoose.connection;
 
 const uri =
-"mongodb+srv://andrewmanteza21:eRqrhWTR8zMJ27rt@cluster0.jre2j.mongodb.net/Driver_records?retryWrites=true&w=majority";{
-    
-}
+"mongodb+srv://andrewmanteza21:eRqrhWTR8zMJ27rt@cluster0.jre2j.mongodb.net/Driver_records?retryWrites=true&w=majority";
 
 const client = new MongoClient(uri);
 client.connect();
@@ -45,7 +43,6 @@ console.log("connected to mongodb database")
     app.get('/adminview', function (req, res) {
       res.render('adminview')
       console.log('this Get from adminview.ejs works')
-
 
     })
 
@@ -101,11 +98,11 @@ console.log("connected to mongodb database")
       console.log(req.body)
     
     })
-    var router = express.Router()
+       var router = express.Router()
       console.log('Read Function Test')
       app.get('/', (req,res) => {
       const cursor = database.collection('user_records').find().toArray()
-      .then(results => {res.render('adminview', { user_records: results})})
+      .then(results => {res.render('landingpage', { user_records: results})})
       console.log(cursor)
       console.log('Read Function Success') 
       module.exports = cursor
